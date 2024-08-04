@@ -14,7 +14,7 @@ public class UsuarioMap : IEntityTypeConfiguration<Usuario>
         
         //Idendity
         builder.Property(u => u.Id)
-            .ValueGeneratedOnAdd()
+            .ValueGeneratedOnAdd() 
             .UseIdentityColumn();
     }
 }
