@@ -7,6 +7,6 @@ public class Livro : BaseEntity
     public string Autor { get; set; }
     public string ISBN { get; set; }
     public int AnoPublicacao { get; set; }
-    
+
     
 }
