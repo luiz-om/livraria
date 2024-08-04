@@ -21,7 +21,6 @@ public class LivroMap : IEntityTypeConfiguration<Livro>
         
         
         //relacionamento
-      
-        
+     
     }
 }

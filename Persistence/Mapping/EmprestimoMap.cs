@@ -24,7 +24,8 @@ public class EmprestimoMap : IEntityTypeConfiguration<Emprestimo>
             .HasForeignKey(l=> l.IdUser);
 
         builder.HasOne(l => l.Livro)
-            .WithMany()
+            .WithMany(l => l.Emprestimos)
+            .HasForeignKey(l => l.IdLivro)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }
