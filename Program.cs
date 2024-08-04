@@ -1,3 +1,6 @@
+using livraria.Persistence;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +11,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Acesso a dados
+
+var connectionString = builder.Configuration.GetConnectionString("Biblioteca");
+
+builder.Services.AddDbContext<LivrariaDbContext>(o => o.UseSqlServer(connectionString));
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
