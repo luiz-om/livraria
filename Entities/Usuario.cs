@@ -13,4 +13,11 @@ public class Usuario : BaseEntity
     public string  Email { get; set; }
 
     public List<Emprestimo>? Emprestimos { get; set; }
+
+
+    public void Update(string nome, string email)
+    {
+        Nome = nome;
+        Email = email;
+    }
 }
