@@ -1,3 +1,5 @@
+using System.Runtime.Serialization;
+
 namespace livraria.Entities;
 
 public class Emprestimo : BaseEntity
@@ -7,6 +9,7 @@ public class Emprestimo : BaseEntity
         IdUser = idUser;
         IdLivro = idLivro;
         DataEmprestimo = DateTime.Now;
+        DataDevolucao = DataEmprestimo.AddDays(10);
     }
     public int IdUser { get; set; }
     public Usuario User { get; set; }
@@ -15,8 +18,9 @@ public class Emprestimo : BaseEntity
 
 
     public DateTime DataEmprestimo { get; set; }
-    // public DateTime DataDevolucao { get; set; }
-    // public bool Devolucao { get; set; }
+
+    public DateTime DataDevolucao { get; set; }
+ 
     
     
 }
