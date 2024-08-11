@@ -24,10 +24,15 @@ public class UsuarioController : ControllerBase
     {
         var usuario = _dbContext.Usuarios
             .Include(u => u.Emprestimos)
+            .ThenInclude(l => l.Livro)
             .ToList();
-        
+        if (usuario.IsNullOrEmpty())
+        {
+            return BadRequest();
+        }
 
-        return Ok(usuario);
+        var model = usuario.Select(UsuarioViewModel.FromEntity).ToList();
+        return Ok(model);
     }
 
     [HttpGet("{id}/qtd")]
@@ -40,7 +45,7 @@ public class UsuarioController : ControllerBase
         {
             return BadRequest();
         }
-        var model = UsuarioViewModel.FromEntity(usuario);
+        var model = UsuarioGetIdViewModel.FromEntity(usuario);
         
         return Ok(model);
     }

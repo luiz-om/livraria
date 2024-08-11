@@ -4,18 +4,21 @@ namespace livraria.Models;
 
 public class UsuarioViewModel
 {
-    public UsuarioViewModel(string nome, List<Emprestimo> ee)
+ 
+    public UsuarioViewModel(string  nome, string  email, List<Emprestimo> emprestimos)
     {
         Nome = nome;
-        QuantidadeEmprestimos = ee.Count;
+        Email = email;
+        Emprestimos = emprestimos.Select(e => e.Livro.Titulo ).ToList();
     }
 
   
     public string Nome { get; set; }
-    public int QuantidadeEmprestimos { get; set; }
+    public string  Email { get; set; }
+    public List<string> Emprestimos { get; set; }
     
 
 
-    public static UsuarioViewModel FromEntity(Usuario usuario)
-        => new UsuarioViewModel(usuario.Nome, usuario.Emprestimos);
+    public static  UsuarioViewModel FromEntity(Usuario usuario)
+        => new UsuarioViewModel(usuario.Nome, usuario.Email, usuario.Emprestimos);
 }
