@@ -37,4 +37,13 @@ public class EmprestimoController : ControllerBase
         
         return Ok(emrpestimo.Id);
     }
+
+    [HttpDelete]
+    public IActionResult Delete(int id)
+    {
+        var emprestimo = _dbContext.Emprestimos.First(e => e.Id==id);
+        _dbContext.Emprestimos.Remove(emprestimo);
+        _dbContext.SaveChanges();
+        return Ok(emprestimo);
+    }
 }

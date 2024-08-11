@@ -13,7 +13,10 @@ public class Emprestimo : BaseEntity
     public int IdLivro { get; set; }
     public Livro Livro { get; set; }
 
+
     public DateTime DataEmprestimo { get; set; }
+    // public DateTime DataDevolucao { get; set; }
+    // public bool Devolucao { get; set; }
     
     
 }
