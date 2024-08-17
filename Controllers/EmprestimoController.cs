@@ -20,12 +20,12 @@ public class EmprestimoController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var emprestimo = _dbContext.Emprestimos
+        var emprestimo = _dbContext.Emprestimos      
             .Include(e => e.User)
             .Include(e => e.Livro)
             .ToList();
-
-        return Ok(emprestimo);
+        var model = emprestimo.Select(EmprestimoViewModel.FromEntity).ToList();
+        return Ok(model);
     }
 
     [HttpPost]
